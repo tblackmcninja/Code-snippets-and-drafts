@@ -1,0 +1,76 @@
+Flair Classes
+  -Support  
+  -Solved 
+  -Bug
+  -Feature request
+  -Community 
+  -Asset Discussion
+  -Official Blog
+  
+---
+# Mentioned the mods
+title+body: ["unixchaos", "jessepollak","justin_coinbase", "coinbase_josh", 
+coinbase_patrick",  "coinbase_kyle", "coinbase_Olga", "coinbase_cindy", 
+"coinbase_tom", "coinbase_dan","Olga"]
+    
+  modmail: The above item contained a reference to a moderator, you might want to check it out.
+---
+# Automatically remove anything that gets 3+ reports and send modmail
+    reports: 3
+    action: filter
+    modmail: The above item has received 3+ reports, please investigate.
+---
+# Apply flair for support
+    ~title+body: "help"
+    title: ["Seeking help", "Support", "Lost", "Locked", "Restricted","Stuck","no help","Still","Weeks","months"]
+    action: filter 
+    set_flair: "Support"
+---
+#apply flair for bug
+~title+body (includes, regex): ["bug","problem","loop","broken","delay",]
+set_flair: "bug"
+---
+#Ban foul mouthed users and aggressors
+author: 
+  name (includes): [bobalonso, golgaroth1, thewoodsterix, skeeloco, Yojimbe, bitcoinballer23, 
+  blazitto_, nance2214, Yungman_Ultra, tetraedre4, Mary5n07, Cueshark, campergoku,
+catchme66012, Nononsense101,rektgod, senor_prickneck, aidsisaproblem, coinbasefuck, nansAshes69, Yaflayedyourself,
+Markuss_Karkarkuss]
+action: remove
+
+comment: Please message support directly<a href="mailto:support@coinbase.com">here</a> for an update to your ticket. 
+---
+#Engage people who may have a ticket already 
+~title+body: "help"
+    title (includes, regex): ["wire","ACH","Wired","transfer","disabled","recover","missing", "pending"]
+    action: filter 
+comment: Thanks for posting! We understand how important wire transfers
+and fiat are to you and apologize greatly on the inconveninece. 
+We're working on your ticket and if you could DM us the ticket ID we can 
+shoot you a quick update on it's status. Please review the sidebar for phone and contact information.
+---
+#Remove aggressive posts
+~title+body (includes, regex): ["Dont","Stealing","Scam","Fucking","Fuck","Bullshit","Pissed","Sucks","Corrupt", "Terrible",
+"Class action","Stolen","Embarrassing", "WTF","Assholes","Gay"]
+action: filter
+comment: We know you're frustrated but there is no need for vulgarity. Please rephrase your comment
+or reach out to support with the ticket ID. Please review the sidebar for phone and contact information.
+---
+#Remove generally innappropriate posts
+~title+body (includes, regex): ["Rant","bad","warning","wait","never","unable","demand","Stuck","Shut","Garbage"]
+action: filter
+comment: The Mod team is reviewing this to make sure it adds value to the subreddit. 
+Yes that includes complaints! Thanks for bearing with us. 
+---
+# Anti troll rule - if a user has zero or lower comment karma and is less than 30 days old old filter the post 
+#- still shows in mode queue so we can rescue good ones.
+    type: comment
+    author:
+        satisfy_any_threshold: false
+        account_age: "< 30"
+        comment_karma: "< 1"
+        is_contributor: false
+        is_moderator: false
+    action: filter
+
+:D XD this one was my favorite : https://www.reddit.com/r/CoinBase/comments/65t7m3/coinbase_is_hitler/
